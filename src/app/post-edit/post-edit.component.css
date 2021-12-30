@@ -1,0 +1,15 @@
+/* all the forms and formControls those are invalid are marked in red */
+/* .ng-invalid {
+    border: 1px solid red;
+} */
+
+/* invalid input, textarea type fields are marked with red */
+/* input.ng-invalid, textarea.ng-invalid {
+    border: 1px solid red;
+} */
+
+/* ng-touched -> after that user starts touching the certain element, css will be applied 
+Not getting red coloured boxes initially*/
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

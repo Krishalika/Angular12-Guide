@@ -1,1 +1,33 @@
-<p>post-edit works!</p>
+<!-- shortcut -> .row>.col-md-6
+<div class="row">
+    <div class="col md-6"></div>
+</div> -->
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Add Post</h3>
+        <!-- in post-edit.component.ts file has configured "form" -->
+        <form [formGroup]="form" (ngSubmit) = "onSubmit()">
+            <div class="form-group">
+                <label>Title</label>
+
+                <!-- here given name for formControlName should be as same as it is defined in post-edit.component typescript file -->
+                <input class="form-control" type="text" formControlName="title">
+            </div>
+            <div>
+                <label>Description</label>
+                <textarea class="form-control" type="text" formControlName="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Image Path</label>
+                <input class="form-control" type="text" formControlName="imagePath">
+            </div>
+
+            <!-- To disable a button -> [disabled]="true" 
+            If the form is not valid-> form property invalid =true -->
+            <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button> |
+            <button type="reset" class="btn btn-primary">Clear</button>
+
+        </form>
+    </div>
+</div>
