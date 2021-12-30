@@ -5,7 +5,8 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h3>Add Post</h3>
+        <h3 *ngIf="editMode === false">Add Post</h3>
+        <h3 *ngIf="editMode === true">Edit Post</h3>
         <!-- in post-edit.component.ts file has configured "form" -->
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-group">

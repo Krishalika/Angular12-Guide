@@ -46,4 +46,9 @@ export class PostService {
   updatePost(index: number, post: Post) {
     this.listOfPosts[index] = post;
   }
+
+  //facility 5 - get a specific post by index
+  getPost(index: number) {
+    return this.listOfPosts[index];
+  }
 }

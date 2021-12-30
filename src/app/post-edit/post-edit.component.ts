@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
 @Component({
@@ -14,22 +14,46 @@ export class PostEditComponent implements OnInit {
   // form! ->either it can be null or form
   form!: FormGroup;
 
+  //store the index, initial value is 0
+  index: number = 0;
+
+  editMode: boolean = false;
   constructor(
     //build a connection with post obj
     private postService: PostService,
 
     //in-built functionality for router service
-    private router: Router
+    private router: Router,
+
+    //will help to work with route parameters
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    let title = '';
+    let description = '';
+    let imagePath = '';
+    this.route.params.subscribe((params: Params) => {
+      if (params['index']) {
+        console.log(params['index']);
+
+        this.index = params['index'];
+
+        const post = this.postService.getPost(this.index);
+        title = post.title;
+        description = post.description;
+        imagePath = post.imagePath;
+
+        this.editMode = true;
+      }
+    });
     //initialize
     this.form = new FormGroup({
-      title: new FormControl(null, [Validators.required
+      title: new FormControl(title, [Validators.required
         // Validators.maxLength(10)
       ]),
-      description: new FormControl(null, [Validators.required]),
-      imagePath: new FormControl(null, [Validators.required])
+      description: new FormControl(description, [Validators.required]),
+      imagePath: new FormControl(imagePath, [Validators.required])
     });
   }
 
@@ -44,8 +68,12 @@ export class PostEditComponent implements OnInit {
 
     const post: Post = new Post(title, description, imagePath, "test@gmail.com", new Date());
 
-    //calling service
-    this.postService.addPost(post);
+    if (this.editMode) {
+      this.postService.updatePost(this.index, post);
+    } else {
+      //calling service
+      this.postService.addPost(post);
+    }
 
     //navigate to /post-list
     this.router.navigate(["/post-list"]);
