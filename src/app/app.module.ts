@@ -10,6 +10,8 @@ import { AuthComponent } from './auth/auth.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  //if there is no path given, redirect to path post-list
+  { path: '', redirectTo: '/post-list', pathMatch: 'full' },
   { path: 'post-list', component: PostListComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'post-add', component: PostEditComponent },
