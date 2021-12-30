@@ -3,7 +3,12 @@
 <p>{{post?.description}}
 </p>
 <img src="{{post?.imagePath}}" class="img-responsive">
-<p>{{post?.author}}</p>
-<p>{{post?.datetimeCreated}}</p>
-<button class="btn btn-success" (click)="onEdit()">Edit</button> | <button (click)="onDelete()" class="btn btn-danger">Delete</button>
+<p>Author: {{post?.author}}</p>
+<p>Date: {{post?.datetimeCreated}}</p>
+
+<button type="button" class="btn btn-default btn-sm" (click)="likePost()">
+    <span class="glyphicon glyphicon-thumbs-up"></span> Like ({{post?.numberOfLikes}})
+</button> <br> <br>
+<button class="btn btn-success" (click)="onEdit()">Edit</button> | <button (click)="onDelete()"
+    class="btn btn-danger">Delete</button>
 <hr>
