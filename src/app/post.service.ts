@@ -59,4 +59,10 @@ export class PostService {
   likePost(index: number) {
     this.listOfPosts[index].numberOfLikes += 1
   }
+
+  //facility7
+  setPosts(listOfPosts: Post[]) {
+    //replacing the existing array with the newly created array
+    this.listOfPosts = listOfPosts;
+  }
 }

@@ -9,6 +9,7 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   //if there is no path given, redirect to path post-list
@@ -25,13 +26,15 @@ const routes: Routes = [
     PostListComponent,
     PostComponent,
     PostEditComponent,
-    AuthComponent
+    AuthComponent,
+
   ],
   imports: [
     BrowserModule,
 
     //inform angular that routings are imported
-    RouterModule.forRoot(routes), ReactiveFormsModule
+    RouterModule.forRoot(routes), ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
