@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
   constructor(private backEndService: BackEndService) { }
 
   ngOnInit(): void {
+    //when the header component is created, data is loaded from the backend
+    this.onFetch()
   }
 
   onSave() {

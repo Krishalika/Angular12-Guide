@@ -1,10 +1,12 @@
-<h2>{{post?.title}}</h2>
+<h2>{{post?.title | uppercase}}</h2>
 <!--by ?.either it can be a post or not-->
 <p>{{post?.description}}
 </p>
 <img src="{{post?.imagePath}}" class="img-responsive">
 <p>Author: {{post?.author}}</p>
-<p>Date: {{post?.datetimeCreated}}</p>
+
+<!-- A pipe is used for date to enhance readability -->
+<p>Date: {{post?.datetimeCreated | date:"dd/MM/yyyy"}}</p>
 
 <button type="button" class="btn btn-default btn-sm" (click)="likePost()">
     <span class="glyphicon glyphicon-thumbs-up"></span> Like ({{post?.numberOfLikes}})
